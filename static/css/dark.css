@@ -1,8 +1,9 @@
-:root {
+:root[data-theme="theme-dark"] {
     --color: rgb(216, 216, 216);
     --background-color: rgb(17, 17, 17);
     --h_color: rgb(242, 242, 242);
 }
+
 .map {
     filter: invert(100%);
     -ms-filter: invert(100%);
