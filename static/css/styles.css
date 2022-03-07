@@ -84,7 +84,6 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
-
 .header_logo {
     color: #fff;
     font-size: 30px;
@@ -112,23 +111,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav_link:hover {
     color: #b4b4b4;
-}
-
-@media screen and (max-width: 700px) {
-    .header_inner {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .nav {
-        display: flex;
-        justify-content: space-around;
-        flex-direction: row;
-        font-size: 14px;
-        text-transform: uppercase;
-        transition: all 350ms ease-in-out;
-    }
-
 }
 
 .delimiter {
@@ -194,13 +176,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer_block {
+    display: flex;
+    flex-direction: column;
     margin-top: 1vh;
     color: #fff;
     text-align: center;
 }
 
-.footer_block_social {
-    display: inline-block;
+.footer_block_social_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .about_author {
@@ -268,4 +254,46 @@ h1, h2, h3, h4, h5, h6 {
 .text_in_development {
     font-size: 20px;
     color: #a0a0a0;
+}
+
+@media screen and (max-width: 700px) {
+    .header_inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        font-size: 14px;
+        text-transform: uppercase;
+        transition: all 350ms ease-in-out;
+    }
+    .gallery img {
+        width: 100%;
+    }
+
+    .container {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .map {
+        height: 30vh;
+        padding-bottom: 25px;
+    }
+
+    .price_list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .price_list .delimiter {
+        height: 1px;
+        width: 100%;
+    }
 }
