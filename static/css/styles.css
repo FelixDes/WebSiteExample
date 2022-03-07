@@ -14,6 +14,11 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--h_color);
 }
 
+h3 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .page {
     overflow: hidden;
     display: flex;
@@ -27,7 +32,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content_container {
-    padding-top: 50px;
+    padding-top: 20px;
 }
 
 .content_container h3 {
