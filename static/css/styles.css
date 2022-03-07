@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6 {
 .content_container h3 {
     text-align: center;
     font-size: 30px;
-    padding-bottom: 25px;
+    /*padding-bottom: 25px;*/
 }
 
 .normal_content {
@@ -164,6 +164,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .map {
     height: 600px;
+    padding-top: 25px;
     padding-bottom: 25px;
 }
 
@@ -203,7 +204,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .about_author_block {
-    padding-bottom: 2vh;
+    padding-bottom: 1vh;
 }
 
 .about_author_image_block {
@@ -229,7 +230,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: row;
     width: 70vw;
-    padding-bottom: 2vw;
+    padding-bottom: 1vh;
 }
 
 .about_author_work_experience .row .period {
@@ -271,6 +272,7 @@ h1, h2, h3, h4, h5, h6 {
         text-transform: uppercase;
         transition: all 350ms ease-in-out;
     }
+
     .gallery img {
         width: 100%;
     }
@@ -294,6 +296,22 @@ h1, h2, h3, h4, h5, h6 {
 
     .price_list .delimiter {
         height: 1px;
+        width: 100%;
+    }
+
+    .about_author {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .about_author_image_block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: auto;
+    }
+
+    .about_author_image_block img {
         width: 100%;
     }
 }
