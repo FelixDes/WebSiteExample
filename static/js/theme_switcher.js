@@ -27,7 +27,7 @@ function toggleTheme() {
     }
 }
 
-alert(document.cookie);
+//alert(document.cookie);
 function setCookie(name, value, options = {}) {
 
     options = {

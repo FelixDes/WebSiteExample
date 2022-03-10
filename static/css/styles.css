@@ -32,7 +32,7 @@ h3 {
 }
 
 .content_container {
-    padding-top: 20px;
+    padding-top: 30px;
 }
 
 .content_container h3 {
@@ -89,10 +89,6 @@ h3 {
     align-items: center;
 }
 
-.header_inner button {
-
-}
-
 .header_logo {
     color: #fff;
     font-size: 30px;
@@ -102,6 +98,7 @@ h3 {
 .nav {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     flex-direction: row;
     font-size: 14px;
     text-transform: uppercase;
@@ -175,6 +172,11 @@ h3 {
     height: 600px;
     padding-top: 25px;
     padding-bottom: 25px;
+    filter: var(--inv);
+    -ms-filter: var(--inv);
+    -webkit-filter: var(--inv);
+    -moz-filter: var(--inv);
+    -o-filter: var(--inv);
 }
 
 .footer {
@@ -272,7 +274,7 @@ h3 {
 }
 
 #theme_switcher_icon {
-    height: 14px;
+    height: 20px;
 }
 
 @media screen and (max-width: 700px) {
@@ -292,7 +294,7 @@ h3 {
     }
 
     .map {
-        height: 30vh;
+        height: 50vh;
         padding-bottom: 25px;
     }
 
