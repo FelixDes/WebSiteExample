@@ -289,10 +289,6 @@ h3 {
     box-shadow: var(--shadow);
 }
 
-.input_label {
-    align: center;
-}
-
 .input {
     background-color: var(--background-color);
     color: var(--color);
@@ -321,8 +317,34 @@ h3 {
 }
 
 .submit_btn:hover {
-    border-width: 2px;
-    background-color: var(--color_near)
+    border: 2px var(--color_near);
+}
+
+.login {
+    background-color: var(--background-color);
+    position: relative;
+    max-width: 500px;
+    text-align: center;
+    padding: 20px;
+    margin: 10% auto 0;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+}
+
+.login_i {
+    margin-left: -30px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    position: absolute;
+}
+
+.register_i {
+    margin-left: -30px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    position: absolute;
 }
 
 @media screen and (max-width: 700px) {
