@@ -170,13 +170,14 @@ h3 {
 
 .map {
     height: 600px;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     filter: var(--inv);
     -ms-filter: var(--inv);
     -webkit-filter: var(--inv);
     -moz-filter: var(--inv);
     -o-filter: var(--inv);
+    box-shadow: var(--shadow);
 }
 
 .footer {
@@ -275,6 +276,53 @@ h3 {
 
 #theme_switcher_icon {
     height: 20px;
+}
+
+.registration {
+    background-color: var(--background-color);
+    position: relative;
+    max-width: 500px;
+    text-align: center;
+    padding: 20px;
+    margin: 10% auto 0;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+}
+
+.input_label {
+    align: center;
+}
+
+.input {
+    background-color: var(--background-color);
+    color: var(--color);
+    transition: color .2s linear;
+    border-radius: 5px;
+    width: 300px;
+    height: 30px;
+    border-width: 0px;
+}
+
+.input:hover {
+    border: 2px var(--color);
+}
+
+.input:active {
+    border: 2px var(--color);
+}
+
+.submit_btn {
+    background-color: var(--background-color);
+    color: var(--color);
+    width: 175px;
+    height: 30px;
+    border-radius: 5px;
+    border-width: 0px;
+}
+
+.submit_btn:hover {
+    border-width: 2px;
+    background-color: var(--color_near)
 }
 
 @media screen and (max-width: 700px) {
