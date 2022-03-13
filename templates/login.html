@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="login">
-    <h1 class="login_label">Авторизация</h1>
+    <h1>Авторизация</h1>
     <form action="" method="post">
         <p class="input_label">
             {{ form.email(class="form-control", class="form-control input", type="email",
@@ -28,6 +28,5 @@
         <p>{{ form.submit(type="submit", class="btn btn-primary submit_btn") }}</p>
         {{message}}
     </form>
-
 </div>
 {% endblock %}

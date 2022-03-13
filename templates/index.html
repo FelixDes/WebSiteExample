@@ -74,9 +74,19 @@
     <div class="content_container" id="request">
         <h3>Определились с планом? Тогда свяжитесь с нашим менеджером</h3>
         <div class="request">
-            <div class="text_in_development">Связь с менеджером будет добавлена с подключением серверного языка и
-                технологии Web Socket I/O
+            {% if not anonymous %}
+            <div class="submit_btn" onclick="document.location='/login'">
+                <div class="simple_text">
+                    Войти
+                </div>
             </div>
+            {% else %}
+            <div class="submit_btn" onclick="document.location='/request'">
+                <div class="simple_text">
+                    Оставить заявку
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
     <div class="content_container" id="find_us">

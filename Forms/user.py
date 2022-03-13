@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField, TextAreaField, SubmitField, BooleanField
 from wtforms import EmailField
 from wtforms.validators import DataRequired
+from wtforms.widgets import TextArea
 
 
 class RegisterForm(FlaskForm):
@@ -17,3 +18,8 @@ class LoginForm(FlaskForm):
     password = PasswordField('Пароль', validators=[DataRequired()])
     remember_me = BooleanField('Запомнить меня')
     submit = SubmitField('Войти')
+
+
+class RequestForm(FlaskForm):
+    text = TextAreaField('Сообщение менеджеру', render_kw={"rows": 30, "cols": 20}, validators=[DataRequired()])
+    submit = SubmitField('Отправить')

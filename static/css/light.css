@@ -1,6 +1,6 @@
 :root[data-theme="theme-light"] {
     --color: rgb(5, 5, 5);
-    --color_near: rgb(225, 225, 225);
+    --color_near: rgb(238, 238, 238);
     --background-color: rgb(250, 250, 250);
     --h_color: rgb(5, 5, 5);
     --inv: invert(0%);
