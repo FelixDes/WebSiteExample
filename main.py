@@ -117,6 +117,5 @@ def make_request():
     return render_template('make_request.html', anonymous=str(current_user).split('>')[0] == '<User',
                            c_user=current_user, form=requestForm, message='')
 
-
 if __name__ == '__main__':
     main()
