@@ -87,5 +87,13 @@
         <div class="map" id="map">
         </div>
     </div>
+    <div class="content_container">
+        <div class="text_in_development">Здесь можно просмотреть все сообщения базы данных</div>
+        <ul id="messages" class="messages">
+            {% for item in message_lst %}
+            <li title="id: {{item[1]}}">{{ item[0]|safe }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 {% endblock %}

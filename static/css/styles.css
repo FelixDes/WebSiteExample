@@ -188,6 +188,14 @@ h3 {
     box-shadow: var(--shadow);
 }
 
+.messages {
+    height: 600px;
+    margin-bottom: 25px;
+    overflow-y: scroll;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+}
+
 .footer {
     display: flex;
     justify-content: space-around;

@@ -22,3 +22,6 @@ class LoginForm(FlaskForm):
 class RequestForm(FlaskForm):
     text = TextAreaField('Сообщение менеджеру', render_kw={"rows": 30, "cols": 20}, validators=[DataRequired()])
     submit = SubmitField('Отправить')
+
+    def get_text(self):
+        return

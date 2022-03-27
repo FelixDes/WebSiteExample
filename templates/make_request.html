@@ -8,7 +8,7 @@
         <div>
             {{ form.csrf_token }}
         </div>
-        <p class="input_label">
+        <p>
             {{ form.text(class="input", type="text", placeholder=form.text.label.text) }}<br>
         </p>
         {% for error in form.text.errors %}
