@@ -36,11 +36,10 @@
                     <a class="nav_link" href="/login">ВХОД</a>
                     {% else %}
                     <a class="nav_link" href="/logout">ВЫХОД</a>
-                    <a class="nav_link"><strong id="username">{{ c_user.name.upper() }}</strong></a>
-                    {% endif %}
-                    <button id="theme_switcher" onclick="toggleTheme()"><img id="theme_switcher_icon"
-                                                                             src="{{url_for('static', filename='assets/theme_switcher/icon.svg')}} ">
-                    </button>
+                    <a class="nav_link">{{ c_user.name.upper() }}</a>
+                    {% endif %}<img id="theme_switcher_icon"
+                                    src="{{url_for('static', filename='assets/theme_switcher/icon.svg')}}"
+                                    onclick="toggleTheme()">
                 </nav>
             </div>
         </div>

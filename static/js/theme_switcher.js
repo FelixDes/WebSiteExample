@@ -1,5 +1,5 @@
-const moonPath = "/static/assets/theme_switcher/moon.svg";
-const sunPath = "/static/assets/theme_switcher/sun.svg";
+const moonPath = "/static/assets/theme_switcher/icon.svg";
+const sunPath = "/static/assets/theme_switcher/icon.svg";
 
 (function () {
     setTheme(getCookie("theme") == "theme-dark" ? "theme-dark" : "theme-light");

@@ -1,32 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<div class="login">
-    <h1>Авторизация</h1>
-    <form action="" method="post">
-        <p class="input_label">
-            {{ form.email(class="form-control", class="form-control input", type="email",
-            placeholder=form.email.label.text) }}<br>
-            {% for error in form.email.errors %}
-        <p class="alert alert-danger" role="alert">
-            {{ error }}
-        </p>
-        {% endfor %}
-        </p>
-        <p class="input_label">
-            {{ form.password(class="form-control",class="form-control input", type="password",
-            placeholder=form.password.label.text) }}
-            <i class="far fa-eye" id="togglePassword"></i> <br>
-            {% for error in form.password.errors %}
-        <p class="alert alert-danger" role="alert">
-            {{ error }}
-        </p>
-        {% endfor %}
-        </p>
-        <p>{{ form.remember_me(type="checkbox", class="boolean-field") }} Запомнить меня</p>
-        <p>{{ form.submit(type="submit", class="btn btn-primary submit_btn") }}</p>
-        {{message}}
-    </form>
+<div class="container">
+    <div class="registration_login">
+        <h1>Авторизация</h1>
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.email(class="input", type="email", placeholder=form.email.label.text) }}<br>
+                {% for error in form.email.errors %}
+                    <p class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </p>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.password(class="input", type="password", placeholder=form.password.label.text) }}
+                <i id="togglePassword"></i> <br>
+                {% for error in form.password.errors %}
+                    <p class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </p>
+                {% endfor %}
+            </p>
+            <p>{{ form.remember_me(type="checkbox", class="boolean-field") }} Запомнить меня</p>
+            <p>{{ form.submit(type="submit", class="submit_btn") }}</p>
+            {{message}}
+        </form>
+    </div>
 </div>
 {% endblock %}

@@ -286,7 +286,7 @@ h3 {
     height: 20px;
 }
 
-.registration {
+.registration_login {
     background-color: var(--background-color);
     position: relative;
     max-width: 500px;
@@ -297,7 +297,7 @@ h3 {
     box-shadow: var(--shadow);
 }
 
-.registration form {
+.registration_login form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -328,26 +328,12 @@ h3 {
     border-radius: 5px;
     border-width: 0;
     transition: box-shadow 0.2s linear;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
 }
 
 .submit_btn:hover {
-    box-shadow: var(--shadow);
-}
-
-.submit_btn .simple_text {
-    font-size: 20px;
-    font-weight: 500;
-    margin: 5px;
-}
-
-.login {
-    background-color: var(--background-color);
-    position: relative;
-    max-width: 500px;
-    text-align: center;
-    padding: 20px;
-    margin: 10% auto 0;
-    border-radius: 16px;
     box-shadow: var(--shadow);
 }
 
@@ -355,22 +341,6 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.login_i {
-    margin-left: -30px;
-    margin-top: 15px;
-    cursor: pointer;
-    font-size: 20px;
-    position: absolute;
-}
-
-.register_i {
-    margin-left: -30px;
-    margin-top: 15px;
-    cursor: pointer;
-    font-size: 20px;
-    position: absolute;
 }
 
 .make_request {
@@ -388,13 +358,14 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 @media screen and (max-width: 700px) {
     .header_inner {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: baseline;
     }
 
     .gallery img {

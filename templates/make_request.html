@@ -9,14 +9,14 @@
             {{ form.csrf_token }}
         </div>
         <p class="input_label">
-            {{ form.text(class="form-control", class="form-control input", type="text", placeholder=form.text.label.text) }}<br>
+            {{ form.text(class="input", type="text", placeholder=form.text.label.text) }}<br>
         </p>
         {% for error in form.text.errors %}
-        <p class="alert alert-danger" role="alert">
-            {{ error }}
-        </p>
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
         {% endfor %}
-        <p class="register_submit">{{ form.submit(type="submit", class="btn btn-primary submit_btn") }}</p>
+        <p>{{ form.submit(type="submit", class="submit_btn") }}</p>
         {{message}}
     </form>
 </div>

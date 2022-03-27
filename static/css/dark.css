@@ -1,8 +1,8 @@
 :root[data-theme="theme-dark"] {
     --color: rgb(216, 216, 216);
-    --color_near: rgb(49, 49, 49);
+    --color_near: rgb(31, 31, 31);
     --background-color: rgb(17, 17, 17);
     --h_color: rgb(242, 242, 242);
     --inv: invert(100%);
-    --shadow: 0 0 0 rgba(0, 0, 0, 0);
+    --shadow: 0 0 15px rgba(56, 56, 56, 0.5);
 }
