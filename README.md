@@ -10,3 +10,7 @@ Applied features:
 * messages to json parser
 
 Site was placed in [Heroku](https://fkn-web-tech.herokuapp.com/)
+
+For running application open terminal in root of the project and type:
+
+{Path to project}\pythonProject\venv\Scripts\python.exe {Path to project}\main.py
