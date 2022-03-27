@@ -28,32 +28,42 @@ function toggleTheme() {
 }
 
 //alert(document.cookie);
-function setCookie(name, value, options = {}) {
 
-    options = {
-        path: '/',
-        ...options
-    };
+// cookie файлы не будут работать, если не эмулировать сайт
+// на сервере можно использовать закоментированную реализацию
+// если же открывать сайт как index.html, то будет использовано сохранение в LocalStorage
 
-    if (options.expires instanceof Date) {
-        options.expires = options.expires.toUTCString();
-    }
-
-    let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
-
-    for (let optionKey in options) {
-        updatedCookie += "; " + optionKey;
-        let optionValue = options[optionKey];
-        if (optionValue !== true) {
-            updatedCookie += "=" + optionValue;
-        }
-    }
-    document.cookie = updatedCookie;
+function setCookie(name, value) {
+    localStorage.setItem(name, value);
 }
-
 function getCookie(name) {
-    let matches = document.cookie.match(new RegExp(
-        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-    ));
-    return matches ? decodeURIComponent(matches[1]) : undefined;
+    return localStorage.getItem(name);
 }
+
+// function setCookie(name, value, options = {}) {
+//     options = {
+//         path: '/',
+//         ...options
+//     };
+//
+//     if (options.expires instanceof Date) {
+//         options.expires = options.expires.toUTCString();
+//     }
+//
+//     let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+//
+//     for (let optionKey in options) {
+//         updatedCookie += "; " + optionKey;
+//         let optionValue = options[optionKey];
+//         if (optionValue !== true) {
+//             updatedCookie += "=" + optionValue;
+//         }
+//     }
+//     document.cookie = updatedCookie;
+// }
+//
+// function getCookie(name) {
+//     const value = `; ${document.cookie}`;
+//     const parts = value.split(`; ${name}=`);
+//     if (parts.length === 2) return parts.pop().split(';').shift();
+// }
