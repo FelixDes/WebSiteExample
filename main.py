@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, render_template, request
 from flask_login import LoginManager, login_user, current_user, login_required, logout_user
 from werkzeug.security import check_password_hash
@@ -15,9 +17,8 @@ app.config['SECRET_KEY'] = \
     "_ti{qxjtrdygXpNadwPPGaOh{zBawz^GBBpoIU|qpGpEVzgRzqhqeZ]hv_oeBhb|WBkmdRANtw}akIfMgOLm{r]ZnYiZcBFXZz{'"
 
 
-def main():
+def init_db():
     db_session.global_init("db/main.db")
-    app.run(port=9999)
 
 
 @login_manager.user_loader
@@ -138,5 +139,11 @@ def add_message(user_name, text, contact):
     db_sess.commit()
 
 
+# if __name__ == '__main__':
+#     init_db()
+#     app.run(port=9999)
+
 if __name__ == '__main__':
-    main()
+    init_db()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
