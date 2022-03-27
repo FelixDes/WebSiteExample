@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 from flask_login import LoginManager, login_user, current_user, login_required, logout_user
-from flask_socketio import SocketIO, send
 from werkzeug.security import check_password_hash
 from werkzeug.utils import redirect
 
@@ -27,94 +26,96 @@ def load_user(user_id):
     return db_sess.query(User).get(user_id)
 
 
-@app.route('/logout')  # Выход из учётной записи
+@app.route('/logout')  # Выход из ученой записи
 @login_required
 def logout():
     logout_user()
-    return redirect("/")  # Возврат на основную страницу
+    return redirect("/")  # Возврат на основанную страницу
 
 
 @app.route("/")
-def index():
-    return render_template("index.html", anonymous=str(current_user).split('>')[0] == '<User',
+def index():  # Главная страница
+    return render_template("index.html", anonymous=current_user.is_anonymous,
                            c_user=current_user, title="ОАО Подземстрой")
 
 
 @app.route("/about_author")
 def about_author():
-    return render_template("about_author.html", anonymous=str(current_user).split('>')[0] == '<User',
+    return render_template("about_author.html", anonymous=current_user.is_anonymous,
                            c_user=current_user, title="About author")
 
 
 @app.route('/registration', methods=['GET', 'POST'])
 def registration():  # Регистрация нового пользователя
-    form = RegisterForm()
+    title = "Регистрация"
+    db_sess = db_session.create_session()
+    form_registration = RegisterForm()
 
-    if form.validate_on_submit():
-        print("reg")
-        if form.password.data != form.password_again.data:
-            return render_template('registration.html', anonymous=str(current_user).split('>')[0] == '<User',
-                                   c_user=current_user, title="Регистрация", form=form,
-                                   message="Пароли не совпадают")
+    if form_registration.validate_on_submit():
+        if form_registration.password.data != form_registration.password_again.data:
             # При различных паролях в первом и втором поле ввода
+            return render_template('registration.html', anonymous=current_user.is_anonymous,
+                                   c_user=current_user, title=title, form=form_registration,
+                                   message="Пароли не совпадают")
 
-        db_sess = db_session.create_session()
-        if db_sess.query(User).filter(User.email == form.email.data).first():
-            return render_template('registration.html', anonymous=str(current_user).split('>')[0] == '<User',
-                                   c_user=current_user, title="Регистрация", form=form,
-                                   message="Такой пользователь уже есть")
+        if db_sess.query(User).filter(User.email == form_registration.email.data).first():
             # При попытке создать пользователя на уже имеющуюся в базе данных почту
-        user = User(name=form.name.data, email=form.email.data)
+            return render_template('registration.html', anonymous=current_user.is_anonymous, c_user=current_user,
+                                   title=title, form=form_registration,
+                                   message="Такой пользователь уже есть")
 
-        user.set_password(form.password.data)
+        user = User(name=form_registration.name.data, email=form_registration.email.data)
+        user.set_password(form_registration.password.data)
         db_sess.add(user)
         db_sess.commit()
 
         return redirect('/login')  # Переадресация на страницу входа
-    return render_template('registration.html', anonymous=str(current_user).split('>')[0] == '<User',
-                           c_user=current_user, title="Регистрация", form=form)
+    return render_template('registration.html', anonymous=current_user.is_anonymous,
+                           c_user=current_user, title=title, form=form_registration)
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():  # Вход в аккаунт
-    form = LoginForm()
-    if form.email.data and form.password.data:
-        db_sess = db_session.create_session()
-        user = db_sess.query(User).filter(User.email == form.email.data).first()
+    db_sess = db_session.create_session()
+    title = "Войти"
+    form_login = LoginForm()
+    if form_login.email.data and form_login.password.data:
+        user = db_sess.query(User).filter(User.email == form_login.email.data).first()
 
         if not user:
             # Если пользователь отсутствует в базе данных
-            return render_template('login.html', anonymous=str(current_user).split('>')[0] == '<User',
-                                   c_user=current_user, title="Войти", form=form,
+            return render_template('login.html', anonymous=current_user.is_anonymous,
+                                   c_user=current_user, title=title, form=form_login,
                                    message="Такого пользователя нет")
 
-        elif not check_password_hash(user.hashed_password, form.password.data):
-            return render_template('login.html', anonymous=str(current_user).split('>')[0] == '<User',
-                                   c_user=current_user, title="Войти", form=form, message="Неверный пароль")
+        elif not check_password_hash(user.hashed_password, form_login.password.data):
+            return render_template('login.html', anonymous=current_user.is_anonymous,
+                                   c_user=current_user, title=title, form=form_login, message="Неверный пароль")
 
-        # Если пароль из базы данных не совподает с введённым
+        # Если пароль из базы данных не совпадает с введенным
         else:
-            login_user(user, remember=form.remember_me.data)
-            return redirect('/')  # Корректный вход в учётную запись
+            login_user(user, remember=form_login.remember_me.data)
+            return redirect('/')  # Корректный вход в учетную запись
             # Происходит переадрессация на главную страницу
-    return render_template('login.html', anonymous=str(current_user).split('>')[0] == '<User',
-                           c_user=current_user, title="Войти", form=form, message='')
+    return render_template('login.html', anonymous=current_user.is_anonymous,
+                           c_user=current_user, title=title, form=form_login, message='')
 
 
 @app.route('/request', methods=['GET', 'POST'])
 def make_request():
-    requestForm = RequestForm()
+    form_request = RequestForm()
 
-    if requestForm.validate_on_submit():
+    if form_request.validate_on_submit():
         if str(current_user).split('>')[0] != '<User':
             return redirect('/login')
         else:
             db_sess = db_session.create_session()
-            message = Message(user_name=current_user.name, text=requestForm.text, contact=current_user.email)
+            message = Message(user_name=current_user.name, text=form_request.text, contact=current_user.email)
             db_sess.add(message)
             return redirect('/')
-    return render_template('make_request.html', anonymous=str(current_user).split('>')[0] == '<User',
-                           c_user=current_user, form=requestForm, message='')
+    return render_template('make_request.html', anonymous=current_user.is_anonymous, c_user=current_user,
+                           form=form_request)
+
 
 if __name__ == '__main__':
     main()
