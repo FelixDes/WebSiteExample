@@ -138,7 +138,6 @@ def add_message(user_name, text, contact):
     db_sess.add(message)
     db_sess.commit()
 
-
 # if __name__ == '__main__':
 #     init_db()
 #     app.run(port=9999)
