@@ -18,7 +18,6 @@ app.config['SECRET_KEY'] = \
 
 def main():
     db_session.global_init("db/main.db")
-
     app.run(port=8081)
 
 
