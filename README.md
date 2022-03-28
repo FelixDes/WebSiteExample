@@ -11,6 +11,9 @@ Applied features:
 
 Site was placed in [Heroku](https://fkn-web-tech.herokuapp.com/)
 
-For running application open terminal in root of the project and type:
-
-{Path to project}\pythonProject\venv\Scripts\python.exe {Path to project}\main.py
+For running application from terminal do those steps:
+1. Install [Python 3.9.9](https://www.python.org/downloads/release/python-399/)
+2. Set absolute python path venv/pyvenv.cfg to home, base-prefix, base-exec-prefix and base-executable
+3. Set absolute database path to DATABASE_PATH in main using {/} for every level (something like: C:/Users/user/PythonProject/db/main.db)
+4. Open terminal and type: {Path to project}\venv\Scripts\python.exe {Path to project}\main.py
+5. Open link from the terminal

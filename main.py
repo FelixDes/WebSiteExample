@@ -1,3 +1,4 @@
+import configparser
 import os
 
 from flask import Flask, render_template, request
@@ -10,15 +11,18 @@ from data import db_session
 from data.messages import Message
 from data.users import User
 
+
+DATABASE_PATH = "db/main.db"
+
+
 app = Flask(__name__)
 login_manager = LoginManager()
 login_manager.init_app(app)
 app.config['SECRET_KEY'] = \
     "_ti{qxjtrdygXpNadwPPGaOh{zBawz^GBBpoIU|qpGpEVzgRzqhqeZ]hv_oeBhb|WBkmdRANtw}akIfMgOLm{r]ZnYiZcBFXZz{'"
 
-
 def init_db():
-    db_session.global_init("db/main.db")
+    db_session.global_init(DATABASE_PATH)
 
 
 @login_manager.user_loader
@@ -115,7 +119,6 @@ def get_message_list():
     message_lst = []
     for i in db_sess.query(Message).filter():
         message_lst.append((f"<strong>{i.user_name.capitalize()}: </strong>" f"{i.text} <sub>{i.created_date.strftime('%H:%M')} {i.contact}</sub>", i.id))
-    print(message_lst)
     return message_lst
 
 
