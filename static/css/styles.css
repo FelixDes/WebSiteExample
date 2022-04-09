@@ -292,6 +292,15 @@ h3 {
 
 #theme_switcher_icon {
     height: 20px;
+    transition: all 0.2s linear;
+}
+
+#theme_switcher_icon:hover {
+    filter: alpha(opacity=50);
+    -ms-filter: alpha(opacity=50);
+    -webkit-filter: opacity(50%);
+    -moz-filter: alpha(opacity=50);
+    -o-filter: alpha(opacity=50);
 }
 
 .registration_login {
